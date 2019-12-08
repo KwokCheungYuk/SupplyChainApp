@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Supply-chain Application</title>
+  </head>
+  <style>
+    input {
+      display: block;
+      margin-bottom: 12px;
+    }
+    
+    #account{
+      width: 575px;
+      border: 2px solid #F00;
+      padding: 15px;
+    }
+
+    #message{
+      width: 575px;
+      border: 2px solid #F00;
+      padding: 15px;
+    }
+
+    .status{
+      color:#F00;
+    }
+    
+  </style>
+  <body>
+    <h1>My Supply-chain Application</h1>
+    
+    <div id="account" style="position:fixed;top:30px;right:10px">
+      <h2>Account Change</h2>
+      <label for="account-input" id="current-account">Account ID:</label><input id="account-input" type="text" placeholder="e.g., 1~10" ></input>
+      <button id="send" onclick="App.changeAccount()">Change Account</button>
+      <br>
+      <p>Current Account: &emsp;<strong id="account-address">loading...</strong></p>
+    </div>
+
+    <div id="message" style="position:fixed;top:300px;right:10px">
+      <h2>Account message</h2>
+      <p>Company Name: <strong id="name">loading...</strong></p>
+      <p>You have <strong id="balance">loading...</strong> balances</p>
+      <p>You have <strong id="credit">loading...</strong> credits</p>
+    </div>
+
+    <h2>Operations</h2>
+    <div id="changeName">
+      <h3>Change Company Name</h3>
+      <label for="new-name">New Name:</label>
+      <input type="text" id="new-name" placeholder="e.g. 车企公司" />
+      <p class = "status" id="status0"></p>
+      <button onclick="App.changeName()">Change Name</button>
+    </div>
+
+    <div id="create">
+      <h3>Create Receipt(创建应收账款)</h3>
+      <label for="create-amount">Amount:</label>
+      <input type="text" id="create-amount" placeholder="e.g. 95" />
+
+      <label for="create-receiver">To address:</label>
+      <input
+        type="text"
+        id="create-receiver"
+        placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"
+      />
+
+      <label for="create-repay">Repay time(days):</label>
+      <input type="text" id="create-repay" placeholder="e.g. 95" />
+
+      <p class = "status" id="status1"></p>
+      <button onclick="App.createContract()">Create Receipt</button>
+    </div>
+
+    <div id="split">
+      <h3>Split Receipt(拆分应收账款)</h3>
+      <label for="split-amount">Amount:</label>
+      <input type="text" id="split-amount" placeholder="e.g. 95" />
+
+      <label for="split-receiver">To address:</label>
+      <input
+        type="text"
+        id="split-receiver"
+        placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"
+      />
+      <p class = "status" id="status2"></p>
+      <button onclick="App.splitReceipt()">Split Receipt</button>
+    </div>
+
+    <div id="finance">
+      <h3>Financing(融资)</h3>
+      <label for="finance-from">From address(应收账款中欠款方地址):</label>
+      <input type="text" id="finance-from" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
+
+      <label for="finance-to">To address(应收账款中收款方地址):</label>
+      <input
+        type="text"
+        id="finance-to"
+        placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae"
+      />
+      <p class = "status" id="status3"></p>
+      <button onclick="App.financing()">Financing</button>
+    </div>
+
+    <div id="repay">
+      <h3>Repay(结算)</h3>
+      
+      <p class = "status" id="status4"></p>
+      <button onclick="App.repay()">Repay</button>
+    </div>
+
+    <p>
+      <strong>PS:</strong> Created by Kwok Cheung Yuk
+    </p>
+    <script src="index.js"></script>
+  </body>
+</html>
